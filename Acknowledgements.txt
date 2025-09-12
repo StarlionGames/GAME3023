@@ -1,2 +1,8 @@
 refresher on tilemaps
 https://youtu.be/DTp5zi8_u1U?si=czvppPTQe1tE7YYV
+
+using unity's input system
+https://gamedevbeginner.com/how-to-use-the-player-input-component-in-unity/
+
+new autotiler from unity
+https://docs.unity3d.com/Packages/com.unity.2d.tilemap.extras@6.0/manual/AutoTile.html#properties
