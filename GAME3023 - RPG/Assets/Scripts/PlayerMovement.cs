@@ -5,12 +5,15 @@ public class PlayerMovement : MonoBehaviour
 {
     public Vector2 direction;
     public float speed;
+    Rigidbody2D rb => gameObject.GetComponent<Rigidbody2D>();
     public void OnMovement(InputValue input)
     {
         direction = input.Get<Vector2>();
+
+        MovePlayer();
     }
-    private void Update()
+    void MovePlayer()
     {
-        transform.Translate(new Vector3(direction.x, direction.y, 0) * speed * Time.deltaTime);
+        rb.linearVelocity = direction * speed;
     }
 }

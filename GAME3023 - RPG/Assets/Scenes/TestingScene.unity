@@ -2374,8 +2374,8 @@ MonoBehaviour:
   IgnoreTimeScale: 0
   WorldUpOverride: {fileID: 0}
   ChannelMask: -1
-  UpdateMethod: 2
-  BlendUpdateMethod: 1
+  UpdateMethod: 0
+  BlendUpdateMethod: 0
   LensModeOverride:
     Enabled: 0
     DefaultMode: 2
@@ -6761,18 +6761,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5367399749349207799, guid: 924cb63254e8cdf4eb1c8e9fdcf6663d, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367399749349207799, guid: 924cb63254e8cdf4eb1c8e9fdcf6663d, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5367399749349207799, guid: 924cb63254e8cdf4eb1c8e9fdcf6663d, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6782510757906403231, guid: 924cb63254e8cdf4eb1c8e9fdcf6663d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6817,10 +6805,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7775867545588201376, guid: 924cb63254e8cdf4eb1c8e9fdcf6663d, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 519420031}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
