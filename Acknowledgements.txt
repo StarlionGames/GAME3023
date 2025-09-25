@@ -6,3 +6,6 @@ https://gamedevbeginner.com/how-to-use-the-player-input-component-in-unity/
 
 new autotiler from unity
 https://docs.unity3d.com/Packages/com.unity.2d.tilemap.extras@6.0/manual/AutoTile.html#properties
+
+nine slices for the title screen buttons
+https://learn.unity.com/tutorial/using-9-slicing-for-scalable-sprites
