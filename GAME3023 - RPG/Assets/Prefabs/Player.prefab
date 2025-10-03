@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5367399749349207799}
   - component: {fileID: 4572108676582357910}
   - component: {fileID: 7775867545588201376}
+  - component: {fileID: 1956681100722731937}
   - component: {fileID: 3191102774180601731}
   - component: {fileID: 1246842796501011210}
   m_Layer: 0
@@ -212,6 +213,18 @@ MonoBehaviour:
   m_DefaultActionMap: Overworld
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1956681100722731937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7541247499065889169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d22f7c151443e747b1a87aed21ca7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!114 &3191102774180601731
 MonoBehaviour:
   m_ObjectHideFlags: 0
