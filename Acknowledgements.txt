@@ -9,3 +9,6 @@ https://docs.unity3d.com/Packages/com.unity.2d.tilemap.extras@6.0/manual/AutoTil
 
 nine slices for the title screen buttons
 https://learn.unity.com/tutorial/using-9-slicing-for-scalable-sprites
+
+long grass inspiration
+https://youtu.be/fePYYZaesSM?si=NJUV1DuRPLKk8A0k
