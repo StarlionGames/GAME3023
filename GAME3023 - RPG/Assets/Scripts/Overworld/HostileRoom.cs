@@ -18,6 +18,7 @@ public class HostileRoom : Room
     private void OnEnable()
     {
         TallGrass.SteppedOnEncounterTile += IncreaseEncounterChance;
+        GameManager.instance.mapManager.SetCurrentRoom(this);
     }
     private void OnDisable()
     {

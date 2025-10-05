@@ -8027,8 +8027,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HostileRoom
   TotalDistanceWalked: 0
   RoomEncounterRate: 10
-  SafetyDistRemaining: 50
-  EncounterRate: 10
+  SafetyDistRemaining: 10
+  EncounterRate: 15
   EncounterAdd: 10
 --- !u!1001 &7918245818344099749
 PrefabInstance:
