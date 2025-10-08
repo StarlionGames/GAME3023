@@ -3,22 +3,38 @@ using System.Collections.Generic;
 
 public class Character: MonoBehaviour
 {
-    public string Name;
     public int Level;
+    public bool IsDowned = false;
 
     [Header("HP / SP")]
-    public float MaxHP;
-    public float CurrHP;
-    public float MaxSP;
-    public float CurrSP;
+    public int MaxHP;
+    public int CurrHP;
+    public int MaxSP;
+    public int CurrSP;
 
     [Header("Stats")]
-    public float ATK;
-    public float DEF; // protection against physical
-    public float RES; // protection against magic
-    public float SPD;
+    public int ATK;
+    public int DEF; // protection against physical
+    public int RES; // protection against magic
+    public int SPD;
 
-    public Skills[] skills = new Skills[4];
-    public List<StatusEffect> statusEffects = new List<StatusEffect>();
+    [Header("Skills")]
+    public List<Skills> skills;
 
+    [Header("Status Effects")]
+    public List<StatusEffect> statusEffects;
+
+    public delegate void CharacterAction();
+    public CharacterAction Attack;
+    public CharacterAction OnDeath;
+    
+    public void TakeDamage(int Damage)
+    {
+        CurrHP -= Damage;
+        if (CurrHP > 0)
+        {
+            CurrHP = 0;
+            OnDeath?.Invoke();
+        }
+    }
 }
