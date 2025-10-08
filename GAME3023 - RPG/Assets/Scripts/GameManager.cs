@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance {  get; private set; }
     public MapManager mapManager { get; private set; }
+    public PartyManager partyManager { get; private set; }
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -17,6 +18,7 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(instance);
 
             mapManager = GetComponentInChildren<MapManager>();
+            partyManager = GetComponentInChildren<PartyManager>();
         }
     }
 }

@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public class Enemy:Character
+[CreateAssetMenu(menuName = "Character/New Enemy")]
+public class Enemy : Character
 {
-    
+    [Header("HP / SP")]
+    public int MaxHP;
+    public int MaxSP;
 }
