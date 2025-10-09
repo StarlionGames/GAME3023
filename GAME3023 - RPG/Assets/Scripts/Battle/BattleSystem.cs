@@ -1,10 +1,22 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public enum BattlePhases
+{
+    BeginFight,
+    PlayerTurn, 
+    EnemyTurn,
+    Win,
+    Lose
+}
 
 public class BattleSystem : MonoBehaviour
 {
-    public BattleTurn CurrentTurn;
+    public BattleState state;
+    public BattlePhases phases => state.CurrentPhase;
 
-    public static Action<BattleTurn> OnTurnBegin;
-    public static Action<BattleTurn> OnTurnEnd;
+    public static Action OnTurnBegin;
+    public static Action OnTurnEnd;
+    public static Action UpdatePhases;
 }

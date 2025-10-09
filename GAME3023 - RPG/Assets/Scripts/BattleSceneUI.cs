@@ -4,6 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class BattleSceneUI : MonoBehaviour
 {
+    [SerializeField] BattleState state; 
+    
+    public void UpdateUI()
+    {
+        
+    }
     public void TryToFlee()
     {
         // add probability stuff later
@@ -13,6 +19,9 @@ public class BattleSceneUI : MonoBehaviour
 
     public void Attack()
     {
-        Debug.Log("player tried to attack! it didn't work!");
+        if (state.CurrentPhase != BattlePhases.PlayerTurn) { return; }
+
+        state.CurrentActiveCharacter.AttackTarget(state.Enemy);
+        Debug.Log("you hit " +state.Enemy.name);
     }
 }
