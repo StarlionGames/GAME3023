@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class Skills:MonoBehaviour
+[CreateAssetMenu(menuName = "New Skill")]
+public class Skills : ScriptableObject
 {
     public int BaseDamage;
     public int SPNeeded;

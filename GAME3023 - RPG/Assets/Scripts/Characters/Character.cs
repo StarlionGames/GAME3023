@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[System.Serializable]
 [CreateAssetMenu(menuName = "Character/New Base Character")]
 public class Character: ScriptableObject
 {
@@ -8,8 +9,7 @@ public class Character: ScriptableObject
     public bool IsDowned = false;
 
     public int BaseHP => 150 + (Level * 10);
-    public int BaseSP => 15 + (Level * 5);
-
+    
     [Header("Stats")]
     public int ATK;
     public int DEF; // protection against physical

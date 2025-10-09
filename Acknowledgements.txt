@@ -12,3 +12,6 @@ https://learn.unity.com/tutorial/using-9-slicing-for-scalable-sprites
 
 long grass inspiration
 https://youtu.be/fePYYZaesSM?si=NJUV1DuRPLKk8A0k
+
+turn based combat
+https://youtu.be/_1pz_ohupPs?si=XdqJqmh-z9plQsj3
