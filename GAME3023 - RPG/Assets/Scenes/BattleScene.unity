@@ -813,7 +813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleTurn
   CurrentActiveCharacter: {fileID: 0}
-  Enemy: {fileID: 0}
+  Enemy: {fileID: 11400000, guid: 8dfbd670511539b45a4eeb1dbbc4cf3e, type: 2}
   CurrentPhase: 0
   TurnsSinceStart: 0
 --- !u!114 &795793074

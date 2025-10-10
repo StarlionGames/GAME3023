@@ -23,5 +23,6 @@ public class BattleSceneUI : MonoBehaviour
 
         state.CurrentActiveCharacter.AttackTarget(state.Enemy);
         Debug.Log("you hit " +state.Enemy.name);
+
     }
 }

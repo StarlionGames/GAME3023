@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+[CreateAssetMenu(menuName = "New Weapon")]
+public class Weapon : ScriptableObject
 {
-    public int BaseAttack { get; set; }
+    public int BaseAttack;
     public StatusEffect Effect;
 }

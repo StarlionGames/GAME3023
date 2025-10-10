@@ -19,4 +19,25 @@ public class BattleSystem : MonoBehaviour
     public static Action OnTurnBegin;
     public static Action OnTurnEnd;
     public static Action UpdatePhases;
+
+    private void OnEnable()
+    {
+        
+    }
+    private void OnDisable()
+    {
+        
+    }
+
+    public void SwitchTurns()
+    {
+        if (phases == BattlePhases.PlayerTurn)
+        {
+            state.CurrentPhase = BattlePhases.EnemyTurn; return;
+        }
+        if (phases == BattlePhases.EnemyTurn)
+        {
+            state.CurrentPhase = BattlePhases.PlayerTurn; return;
+        }
+    }
 }

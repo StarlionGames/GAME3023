@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[System.Serializable]
 [CreateAssetMenu(menuName = "Character/New Base Character")]
 public class Character: ScriptableObject
 {
@@ -31,6 +30,9 @@ public class Character: ScriptableObject
 
     private void OnEnable()
     {
+        CurrHP = MaxHP;
+        CurrSP = MaxSP;
+        
         OnDeath += HasBeenDowned;
     }
     private void OnDisable()
