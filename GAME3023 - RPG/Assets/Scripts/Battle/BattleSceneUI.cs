@@ -8,8 +8,16 @@ public class BattleSceneUI : MonoBehaviour
 {
     [SerializeField] GameObject canvas;
     public TextMeshProUGUI textBox;
-    public Button AttackButton, SkillButton, FleeButton;
+
+    [Header("Buttons")]
+    public Button AttackButton;
+    public Button SkillButton;
+    public Button FleeButton;
+
+
+    [Header("Skills")]
     public ScrollRect SkillList;
+    [SerializeField] GameObject SkillChoicePrefab;
 
     public void UpdateText(string newText)
     {
