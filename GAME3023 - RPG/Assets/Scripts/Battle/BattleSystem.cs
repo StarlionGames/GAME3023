@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,31 +14,39 @@ public enum BattlePhases
 
 public class BattleSystem : MonoBehaviour
 {
-    public BattleState state;
-    public BattlePhases phases => state.CurrentPhase;
+    [SerializeField] BattleState state;
+    [SerializeField] BattleSceneUI ui;
+    public BattlePhases CurrentPhase;
 
     public static Action OnTurnBegin;
     public static Action OnTurnEnd;
     public static Action UpdatePhases;
 
-    private void OnEnable()
+    private void Start()
     {
-        
-    }
-    private void OnDisable()
-    {
-        
+        CurrentPhase = BattlePhases.BeginFight;
+        StartCoroutine(SetupBattle());
     }
 
+    IEnumerator SetupBattle()
+    {
+        ui.UpdateText("A " + state.Enemy.name + " appeared!");
+
+        yield return new WaitForSeconds(2f);
+
+        ui.ClearCanvas();
+        CurrentPhase = BattlePhases.PlayerTurn;
+        ui.ShowPlayerActions();
+    }
     public void SwitchTurns()
     {
-        if (phases == BattlePhases.PlayerTurn)
+        if (CurrentPhase == BattlePhases.PlayerTurn)
         {
-            state.CurrentPhase = BattlePhases.EnemyTurn; return;
+            CurrentPhase = BattlePhases.EnemyTurn; return;
         }
-        if (phases == BattlePhases.EnemyTurn)
+        if (CurrentPhase == BattlePhases.EnemyTurn)
         {
-            state.CurrentPhase = BattlePhases.PlayerTurn; return;
+            CurrentPhase = BattlePhases.PlayerTurn; return;
         }
     }
 }

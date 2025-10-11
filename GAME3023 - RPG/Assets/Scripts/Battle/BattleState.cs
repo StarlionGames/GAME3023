@@ -8,27 +8,19 @@ public class BattleState : MonoBehaviour
 
     public Character CurrentActiveCharacter;
     public Enemy Enemy;
-    public BattlePhases CurrentPhase;
     public float TurnsSinceStart;
 
-    private void OnEnable()
+    private void Awake()
     {
         PartyMembers = GameManager.instance.partyManager.Party;
+    }
+    private void OnEnable()
+    { 
         CurrentActiveCharacter = PartyMembers[0];
-
-        CurrentPhase = BattlePhases.PlayerTurn;
     }
     private void OnDisable()
     {
         PartyMembers = null;
     }
-    public void PlayerTurn()
-    {
-        if (Enemy.IsDowned)
-        {
-            CurrentPhase = BattlePhases.Win;
-            
-        }
-    }
-
+   
 }

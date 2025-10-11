@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[System.Serializable]
 [CreateAssetMenu(menuName = "Character/New Base Character")]
 public class Character: ScriptableObject
 {
@@ -25,7 +26,6 @@ public class Character: ScriptableObject
     public List<StatusEffect> statusEffects;
 
     public delegate void CharacterAction();
-    public CharacterAction TurnAction;
     public CharacterAction OnDeath;
 
     private void OnEnable()
@@ -40,6 +40,10 @@ public class Character: ScriptableObject
         OnDeath -= HasBeenDowned;
     }
     public virtual void AttackTarget(Character target) { }
+    public void UseSkill(Skills skill, Character target)
+    {
+        skill.UseSkill(this, target);
+    }
     public void TakeDamage(int damage)
     {
         CurrHP -= damage;

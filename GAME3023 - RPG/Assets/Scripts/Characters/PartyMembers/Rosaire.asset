@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790c2fd2ff7a54c488040968b9992a8f, type: 3}
   m_Name: Rosaire
   m_EditorClassIdentifier: Assembly-CSharp::Party
+  sprite: {fileID: 0}
   Level: 1
   IsDowned: 0
+  CurrHP: 160
+  CurrSP: 15
   ATK: 0
   DEF: 0
   RES: 0
@@ -22,6 +25,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
   - {fileID: 11400000, guid: 6af23b42ec5335c4da705a172938c0ab, type: 2}
   statusEffects: []
-  CurrHP: 0
-  CurrSP: 0
-  EquippedWeapon: {fileID: 0}
+  EquippedWeapon: {fileID: 11400000, guid: abc7b59d842d993498c8a2305c399944, type: 2}
