@@ -23,6 +23,6 @@ MonoBehaviour:
   SPD: 0
   skills:
   - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
-  - {fileID: 11400000, guid: 6af23b42ec5335c4da705a172938c0ab, type: 2}
+  - {fileID: 11400000, guid: f34e23e2365140b4783192b69f2b2987, type: 2}
   statusEffects: []
   EquippedWeapon: {fileID: 11400000, guid: abc7b59d842d993498c8a2305c399944, type: 2}

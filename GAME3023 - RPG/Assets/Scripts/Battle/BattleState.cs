@@ -10,17 +10,19 @@ public class BattleState : MonoBehaviour
     public Enemy Enemy;
     public float TurnsSinceStart;
 
-    private void Awake()
-    {
-        PartyMembers = GameManager.instance.partyManager.Party;
-    }
     private void OnEnable()
-    { 
-        CurrentActiveCharacter = PartyMembers[0];
+    {
+
     }
     private void OnDisable()
     {
         PartyMembers = null;
     }
+    private void Start()
+    {
+        PartyMembers = GameManager.instance.partyManager.Party;
+        CurrentActiveCharacter = PartyMembers[0];
+    }
+    
    
 }

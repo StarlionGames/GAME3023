@@ -12,4 +12,8 @@ public class Party : Character
 
         target.TakeDamage(FinalDamage);
     } 
+    public void AddNewSkill(Skills skillToAdd)
+    {
+        skills.Add(skillToAdd);
+    }
 }
