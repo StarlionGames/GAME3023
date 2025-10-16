@@ -63,4 +63,8 @@ public class Character: ScriptableObject
     {
         IsDowned = true;
     }
+    public void Resurrect()
+    {
+        IsDowned = false;
+    }
 }

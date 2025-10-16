@@ -36,7 +36,6 @@ public class BattleSystem : MonoBehaviour
     private void Start()
     {
         OnTurnBegin += () => StartCoroutine(Battle());
-        OnTurnEnd += state.EmptyTurnActions;
         OnTurnEnd += ChooseActions;
         
         CurrentPhase = BattlePhases.BeginFight;
@@ -53,18 +52,52 @@ public class BattleSystem : MonoBehaviour
     IEnumerator Battle()
     {
         CurrentPhase = BattlePhases.PlayerTurn;
-        BattleState.PlayerTurn?.Invoke();
-        if (state.Enemy.IsDowned) yield break;
+        state.LaunchPlayerAction();
+        if (state.Enemy.IsDowned)
+        {
+            ui.UpdateText("you won!");
+            yield return new WaitForSeconds(1.5f);
+            BattleDeterminer(BattlePhases.Win);
+            yield return new WaitForSeconds(1.5f);
+
+            SceneManager.LoadScene("TestingScene");
+        }
+            
 
         yield return new WaitForSeconds(1.5f);
 
         CurrentPhase = BattlePhases.EnemyTurn;
         ui.UpdateText("enemy attacked!");
-        BattleState.EnemyTurn?.Invoke();
+        state.LaunchEnemyAction();
+        if (state.CurrentActiveCharacter.IsDowned)
+        {
+            ui.UpdateText("you lost...");
+            BattleDeterminer(BattlePhases.Lose);
+            yield return new WaitForSeconds(1.5f);
+
+            SceneManager.LoadScene("TestingScene");
+        }
+
         yield return new WaitForSeconds(1.5f);
 
         OnTurnEnd?.Invoke();
         yield break;
+    }
+    void BattleDeterminer(BattlePhases phase)
+    {
+        switch (phase)
+        {
+            case BattlePhases.Win:
+                state.CurrentActiveCharacter.LevelUp();
+                ui.UpdateText(state.CurrentActiveCharacter.name + " got the new skill " +
+                    state.CurrentActiveCharacter.skills.FindLast(i => i).skillName + "!");
+                break;
+            case BattlePhases.Lose:
+                
+                break;
+            default:
+                break;
+        }
     }
     public void ChooseActions()
     {

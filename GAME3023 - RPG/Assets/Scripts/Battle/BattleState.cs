@@ -1,7 +1,8 @@
-using UnityEngine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System;
+using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class BattleState : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class BattleState : MonoBehaviour
     public Enemy Enemy;
     public float TurnsSinceStart;
 
-    public static Action PlayerTurn;
-    public static Action EnemyTurn;
+    public static event Action PlayerTurn;
+    public static event Action EnemyTurn;
     
     private void OnDisable()
     {
@@ -25,13 +26,18 @@ public class BattleState : MonoBehaviour
 
         CurrentActiveCharacter.CurrHP = CurrentActiveCharacter.MaxHP; // fully heal the enemy for testing purposes
         Enemy.CurrHP = Enemy.MaxHP; // fully heal the enemy for testing purposes
+        Enemy.Resurrect();
 
+        EnemyTurn += () => Enemy.AttackTarget(BattleSystem.instance.state.CurrentActiveCharacter);
     }
-    public void EmptyTurnActions()
+    public void LaunchPlayerAction()
     {
+        PlayerTurn?.Invoke();
         PlayerTurn = null;
-        //EnemyTurn = null; 
-        // leave out enemy turn nullification until different actions are implemented
     }
-   
+    public void LaunchEnemyAction()
+    {
+        EnemyTurn?.Invoke();
+        //EnemyTurn = null;
+    }
 }
