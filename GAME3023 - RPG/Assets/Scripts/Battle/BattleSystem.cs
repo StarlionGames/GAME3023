@@ -16,30 +16,31 @@ public enum BattlePhases
 
 public class BattleSystem : MonoBehaviour
 {
-    public static BattleSystem instance { get; private set; }
-    
-    public BattleState state;
+    [SerializeField] BattleState state;
     [SerializeField] BattleSceneUI ui;
     public BattlePhases CurrentPhase;
 
     public static Action OnTurnBegin;
     public static Action OnTurnEnd;
     public static Action UpdatePhases;
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(instance);
-        }
-        else { instance = this; }
-    }
-    private void Start()
+    public static Action<BattleSystem> OnBattleSystemAwake;
+
+    private void OnEnable()
     {
         OnTurnBegin += () => StartCoroutine(Battle());
         OnTurnEnd += ChooseActions;
-        
+
         CurrentPhase = BattlePhases.BeginFight;
         StartCoroutine(SetupBattle());
+    }
+    private void OnDisable()
+    {
+        OnTurnBegin -= () => StartCoroutine(Battle());
+        OnTurnEnd -= ChooseActions;
+    }
+    private void Start()
+    {
+        OnBattleSystemAwake?.Invoke(this);
     }
     IEnumerator SetupBattle()
     {

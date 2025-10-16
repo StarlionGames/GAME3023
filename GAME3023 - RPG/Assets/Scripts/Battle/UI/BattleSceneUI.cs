@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class BattleSceneUI : MonoBehaviour
 {
+    BattleState battleState;
+
     [SerializeField] GameObject canvas;
     public TextMeshProUGUI textBox;
 
@@ -17,9 +19,18 @@ public class BattleSceneUI : MonoBehaviour
     [Header("Skills")]
     public ScrollRect SkillList;
     [SerializeField] GameObject SkillChoicePrefab;
+
+    private void OnEnable()
+    {
+        BattleState.OnBattleStateAwake += GetBattleState;
+    }
+    private void OnDisable()
+    {
+        BattleState.OnBattleStateAwake -= GetBattleState;
+    }
     private void Start()
     {
-        Party curr = BattleSystem.instance.state.CurrentActiveCharacter;
+        Party curr = battleState.CurrentActiveCharacter;
         if (curr == null)
         {
             Debug.Log("Character is null!");
@@ -29,6 +40,7 @@ public class BattleSceneUI : MonoBehaviour
         AttackButton.onClick.AddListener(() => Attack(curr));
         SkillButton.onClick.AddListener(() => OpenSkills(curr));
     }
+    void GetBattleState(BattleState currBattleState) => battleState = currBattleState;
     public void UpdateText(string newText)
     {
         if (!textBox.isActiveAndEnabled) 
@@ -58,7 +70,7 @@ public class BattleSceneUI : MonoBehaviour
     public void Attack(Party c)
     {
         BattleState.PlayerTurn += () => UpdateText(c.name + " attacked!");
-        BattleState.PlayerTurn += () => c.AttackTarget(BattleSystem.instance.state.Enemy);
+        BattleState.PlayerTurn += () => c.AttackTarget(battleState.Enemy);
         BattleSystem.OnTurnBegin?.Invoke();
         // later, be able to select enemies rather than just having one
     }
@@ -78,7 +90,7 @@ public class BattleSceneUI : MonoBehaviour
     public void SelectSkill(Skills s, Party c)
     {
         BattleState.PlayerTurn += () => UpdateText(c.name + " used the skill " + s.name + "!");
-        BattleState.PlayerTurn += () => s.UseSkill(c, BattleSystem.instance.state.Enemy);
+        BattleState.PlayerTurn += () => s.UseSkill(c, battleState.Enemy);
         BattleSystem.OnTurnBegin?.Invoke();
     }
     public void CloseSkillList()

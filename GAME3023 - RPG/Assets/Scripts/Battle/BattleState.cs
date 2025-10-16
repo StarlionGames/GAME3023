@@ -14,12 +14,9 @@ public class BattleState : MonoBehaviour
 
     public static event Action PlayerTurn;
     public static event Action EnemyTurn;
-    
-    private void OnDisable()
-    {
-        PartyMembers = null;
-    }
-    private void Start()
+    public static event Action<BattleState> OnBattleStateAwake;
+
+    private void OnEnable()
     {
         PartyMembers = GameManager.instance.partyManager.Party;
         CurrentActiveCharacter = PartyMembers[0];
@@ -28,7 +25,15 @@ public class BattleState : MonoBehaviour
         Enemy.CurrHP = Enemy.MaxHP; // fully heal the enemy for testing purposes
         Enemy.Resurrect();
 
-        EnemyTurn += () => Enemy.AttackTarget(BattleSystem.instance.state.CurrentActiveCharacter);
+        EnemyTurn += () => Enemy.AttackTarget(CurrentActiveCharacter);
+    }
+    private void OnDisable()
+    {
+        PartyMembers = null;
+    }
+    private void Start()
+    {
+        OnBattleStateAwake?.Invoke(this);
     }
     public void LaunchPlayerAction()
     {
