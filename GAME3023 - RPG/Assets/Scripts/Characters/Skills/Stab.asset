@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Stab
   m_EditorClassIdentifier: Assembly-CSharp::AttackSkill
   Description: 
-  BasePower: 0
+  BasePower: 65
   SPNeeded: 0
