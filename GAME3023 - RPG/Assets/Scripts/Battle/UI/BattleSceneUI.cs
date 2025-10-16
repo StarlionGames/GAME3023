@@ -17,7 +17,18 @@ public class BattleSceneUI : MonoBehaviour
     [Header("Skills")]
     public ScrollRect SkillList;
     [SerializeField] GameObject SkillChoicePrefab;
+    private void Start()
+    {
+        Party curr = BattleSystem.instance.state.CurrentActiveCharacter;
+        if (curr == null)
+        {
+            Debug.Log("Character is null!");
+            return;
+        }
 
+        AttackButton.onClick.AddListener(() => Attack(curr));
+        SkillButton.onClick.AddListener(() => OpenSkills(curr));
+    }
     public void UpdateText(string newText)
     {
         if (!textBox.isActiveAndEnabled) 
@@ -32,28 +43,26 @@ public class BattleSceneUI : MonoBehaviour
         AttackButton.gameObject.SetActive(true);
         SkillButton.gameObject.SetActive(true);
         FleeButton.gameObject.SetActive(true);
-
-        Character curr = BattleSystem.instance.state.CurrentActiveCharacter;
-        if (curr == null) {
-            Debug.Log("Character is null!");
-            return; }   
-
-        AttackButton.onClick.AddListener(() => Attack(curr));
-        SkillButton.onClick.AddListener(() => OpenSkills(curr));
     }
     public void ClearCanvas()
     {
+        foreach(Transform child in SkillList.content.transform)
+        {
+            Destroy(child.gameObject);
+        }
         foreach(Transform child in canvas.transform)
         {
             child.gameObject.SetActive(false);
         }
     }
-    public void Attack(Character character)
+    public void Attack(Party c)
     {
-        Debug.Log(character.name + " tried to attack!");
-        character.AttackTarget(BattleSystem.instance.state.Enemy);
+        BattleState.PlayerTurn += () => UpdateText(c.name + " attacked!");
+        BattleState.PlayerTurn += () => c.AttackTarget(BattleSystem.instance.state.Enemy);
+        BattleSystem.OnTurnBegin?.Invoke();
+        // later, be able to select enemies rather than just having one
     }
-    public void OpenSkills(Character character)
+    public void OpenSkills(Party character)
     {
         ClearCanvas();
         SkillList.gameObject.SetActive(true);
@@ -66,13 +75,16 @@ public class BattleSceneUI : MonoBehaviour
             button.GetComponent<Button>().onClick.AddListener(()=>SelectSkill(s, character));
         }
     }
-    public void SelectSkill(Skills s, Character c)
+    public void SelectSkill(Skills s, Party c)
     {
-        s.UseSkill(c, BattleSystem.instance.state.Enemy);
-        UpdateText(c.name + " used skill " + s.name + "!");
-
-        
-        BattleSystem.instance.SwitchTurns();
+        BattleState.PlayerTurn += () => UpdateText(c.name + " used the skill " + s.name + "!");
+        BattleState.PlayerTurn += () => s.UseSkill(c, BattleSystem.instance.state.Enemy);
+        BattleSystem.OnTurnBegin?.Invoke();
+    }
+    public void CloseSkillList()
+    {
+        ClearCanvas();
+        ShowPlayerActions();
     }
     public void TryToFlee()
     {

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Tackle
   m_EditorClassIdentifier: Assembly-CSharp::AttackSkill
   Description: 
-  BasePower: 3
+  BasePower: 40
   SPNeeded: 0

@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Rosaire
   m_EditorClassIdentifier: Assembly-CSharp::Party
   sprite: {fileID: 0}
-  Level: 1
+  Level: 5
   IsDowned: 0
-  CurrHP: 160
-  CurrSP: 15
-  ATK: 0
-  DEF: 0
-  RES: 0
-  SPD: 0
+  MaxHP: 52
+  MaxSP: 10
+  CurrHP: 12
+  CurrSP: 10
+  ATK: 52
+  DEF: 43
+  RES: 50
+  SPD: 65
   skills:
   - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
   - {fileID: 11400000, guid: f34e23e2365140b4783192b69f2b2987, type: 2}

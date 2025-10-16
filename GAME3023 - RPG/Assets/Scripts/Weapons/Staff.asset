@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37574c3338930e94d90e2520c121a6f4, type: 3}
-  m_Name: Slash
-  m_EditorClassIdentifier: Assembly-CSharp::AttackSkill
-  Description: 
-  BasePower: 40
-  SPNeeded: 0
+  m_Script: {fileID: 11500000, guid: 6b1869fa93667214a9921d7793243faa, type: 3}
+  m_Name: Staff
+  m_EditorClassIdentifier: Assembly-CSharp::Weapon
+  BaseAttack: 1
+  Effect: {fileID: 0}

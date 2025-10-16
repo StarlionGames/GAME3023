@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53b77670ec6e094586492dd2230fb55, type: 3}
   m_Name: Test Enemy
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  sprite: {fileID: 0}
   Level: 5
-  IsDowned: 0
-  ATK: 10
-  DEF: 5
-  RES: 0
-  SPD: 5
+  IsDowned: 1
+  MaxHP: 39
+  MaxSP: 10
+  CurrHP: 0
+  CurrSP: 10
+  ATK: 49
+  DEF: 49
+  RES: 65
+  SPD: 45
   skills:
   - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
   statusEffects: []
-  CurrHP: 0

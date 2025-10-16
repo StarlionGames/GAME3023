@@ -1,19 +1,19 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 public class BattleState : MonoBehaviour
 {
-    List<Character> PartyMembers;
+    List<Party> PartyMembers;
 
-    public Character CurrentActiveCharacter;
+    public Party CurrentActiveCharacter;
     public Enemy Enemy;
     public float TurnsSinceStart;
 
-    private void OnEnable()
-    {
-
-    }
+    public static Action PlayerTurn;
+    public static Action EnemyTurn;
+    
     private void OnDisable()
     {
         PartyMembers = null;
@@ -22,7 +22,16 @@ public class BattleState : MonoBehaviour
     {
         PartyMembers = GameManager.instance.partyManager.Party;
         CurrentActiveCharacter = PartyMembers[0];
+
+        CurrentActiveCharacter.CurrHP = CurrentActiveCharacter.MaxHP; // fully heal the enemy for testing purposes
+        Enemy.CurrHP = Enemy.MaxHP; // fully heal the enemy for testing purposes
+
     }
-    
+    public void EmptyTurnActions()
+    {
+        PlayerTurn = null;
+        //EnemyTurn = null; 
+        // leave out enemy turn nullification until different actions are implemented
+    }
    
 }

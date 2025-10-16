@@ -9,8 +9,8 @@ public class Character: ScriptableObject
     public bool IsDowned = false;
 
     [Header("HP / SP")]
-    public int MaxHP => 150 + (Level * 10);
-    public int MaxSP => 10 + (Level * 5);
+    public int MaxHP;
+    public int MaxSP;
 
     public int CurrHP;
     public int CurrSP;
@@ -26,6 +26,7 @@ public class Character: ScriptableObject
 
     public delegate void CharacterAction();
     public CharacterAction OnDeath;
+    public CharacterAction OnDamage;
 
     private void OnEnable()
     {
@@ -46,11 +47,17 @@ public class Character: ScriptableObject
     public void TakeDamage(int damage)
     {
         CurrHP -= damage;
+        OnDamage?.Invoke();
         if (CurrHP < 0)
         {
             CurrHP = 0;
             OnDeath?.Invoke();
         }
+    }
+    public void HealHealth(int amount)
+    {
+        CurrHP += amount;
+        if (CurrHP > MaxHP) { CurrHP = MaxHP; }
     }
     public void HasBeenDowned()
     {

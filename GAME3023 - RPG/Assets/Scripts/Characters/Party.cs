@@ -7,10 +7,9 @@ public class Party : Character
    
     public override void AttackTarget(Character target)
     {
-        int BaseDamage = DamageCalculator.CalculateFlatDamage(this, target);
-        int FinalDamage = BaseDamage + EquippedWeapon.BaseAttack;
-
-        target.TakeDamage(FinalDamage);
+        int Damage = DamageCalculator.CalculateFlatDamage(this, target, EquippedWeapon.BaseAttack);
+       
+        target.TakeDamage(Damage);
     } 
     public void AddNewSkill(Skills skillToAdd)
     {

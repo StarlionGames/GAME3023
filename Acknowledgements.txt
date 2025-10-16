@@ -15,3 +15,9 @@ https://youtu.be/fePYYZaesSM?si=NJUV1DuRPLKk8A0k
 
 turn based combat
 https://youtu.be/_1pz_ohupPs?si=XdqJqmh-z9plQsj3
+
+lambda expressions for my delegates
+https://discussions.unity.com/t/not-sure-when-to-use-lambda-expressions-can-someone-give-me-examples/619259
+
+damage formula
+https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_III

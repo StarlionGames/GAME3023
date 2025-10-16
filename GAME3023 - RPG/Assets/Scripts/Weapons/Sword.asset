@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1869fa93667214a9921d7793243faa, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  BaseAttack: 5
+  BaseAttack: 25
   Effect: {fileID: 0}

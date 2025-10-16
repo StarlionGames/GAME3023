@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 790c2fd2ff7a54c488040968b9992a8f, type: 3}
   m_Name: Chantal
   m_EditorClassIdentifier: Assembly-CSharp::Party
+  sprite: {fileID: 0}
   Level: 1
   IsDowned: 0
+  CurrHP: 160
+  CurrSP: 15
   ATK: 0
   DEF: 0
   RES: 0
   SPD: 0
-  skills: []
+  skills:
+  - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
+  - {fileID: 11400000, guid: f34e23e2365140b4783192b69f2b2987, type: 2}
   statusEffects: []
-  MaxHP: 0
-  MaxSP: 0
-  CurrHP: 0
-  CurrSP: 0
-  EquippedWeapon: {fileID: 0}
+  EquippedWeapon: {fileID: 11400000, guid: abc7b59d842d993498c8a2305c399944, type: 2}

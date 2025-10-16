@@ -5,6 +5,7 @@ public class Enemy : Character
 {
     public override void AttackTarget(Character target)
     {
-        DamageCalculator.CalculateFlatDamage(this, target);
+        int damage = DamageCalculator.CalculateFlatDamage(this, target, 40);
+        target.TakeDamage(damage);
     }
 }

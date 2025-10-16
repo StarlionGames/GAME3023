@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.SceneManagement;
 public enum BattlePhases
 {
     BeginFight,
+    SetUp,
     PlayerTurn, 
     EnemyTurn,
     Win,
@@ -23,7 +25,6 @@ public class BattleSystem : MonoBehaviour
     public static Action OnTurnBegin;
     public static Action OnTurnEnd;
     public static Action UpdatePhases;
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -34,6 +35,10 @@ public class BattleSystem : MonoBehaviour
     }
     private void Start()
     {
+        OnTurnBegin += () => StartCoroutine(Battle());
+        OnTurnEnd += state.EmptyTurnActions;
+        OnTurnEnd += ChooseActions;
+        
         CurrentPhase = BattlePhases.BeginFight;
         StartCoroutine(SetupBattle());
     }
@@ -43,19 +48,28 @@ public class BattleSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
-        ui.ClearCanvas();
-        CurrentPhase = BattlePhases.PlayerTurn;
-        ui.ShowPlayerActions();
+        ChooseActions();
     }
-    public void SwitchTurns()
+    IEnumerator Battle()
     {
-        if (CurrentPhase == BattlePhases.PlayerTurn)
-        {
-            CurrentPhase = BattlePhases.EnemyTurn; return;
-        }
-        if (CurrentPhase == BattlePhases.EnemyTurn)
-        {
-            CurrentPhase = BattlePhases.PlayerTurn; return;
-        }
+        CurrentPhase = BattlePhases.PlayerTurn;
+        BattleState.PlayerTurn?.Invoke();
+        if (state.Enemy.IsDowned) yield break;
+
+        yield return new WaitForSeconds(1.5f);
+
+        CurrentPhase = BattlePhases.EnemyTurn;
+        ui.UpdateText("enemy attacked!");
+        BattleState.EnemyTurn?.Invoke();
+        yield return new WaitForSeconds(1.5f);
+
+        OnTurnEnd?.Invoke();
+        yield break;
+    }
+    public void ChooseActions()
+    {
+        ui.ClearCanvas();
+        CurrentPhase = BattlePhases.SetUp;
+        ui.ShowPlayerActions();
     }
 }
