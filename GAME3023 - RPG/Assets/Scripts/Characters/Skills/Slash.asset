@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Slash
   m_EditorClassIdentifier: Assembly-CSharp::AttackSkill
   Description: 
-  BasePower: 50
+  BasePower: 60
   SPNeeded: 0

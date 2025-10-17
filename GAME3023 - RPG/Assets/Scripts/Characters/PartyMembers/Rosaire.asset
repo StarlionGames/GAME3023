@@ -17,9 +17,9 @@ MonoBehaviour:
   IsDowned: 0
   MaxHP: 52
   MaxSP: 10
-  CurrHP: 52
+  CurrHP: 22
   CurrSP: 10
-  ATK: 52
+  ATK: 60
   DEF: 43
   RES: 50
   SPD: 65
