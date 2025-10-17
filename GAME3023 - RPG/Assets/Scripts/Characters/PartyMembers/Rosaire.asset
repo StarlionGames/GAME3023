@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790c2fd2ff7a54c488040968b9992a8f, type: 3}
+  m_Name: Rosaire
+  m_EditorClassIdentifier: Assembly-CSharp::Party
+  sprite: {fileID: 0}
+  Level: 5
+  IsDowned: 0
+  MaxHP: 52
+  MaxSP: 10
+  CurrHP: 22
+  CurrSP: 10
+  ATK: 60
+  DEF: 43
+  RES: 50
+  SPD: 65
+  skills:
+  - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
+  - {fileID: 11400000, guid: f34e23e2365140b4783192b69f2b2987, type: 2}
+  - {fileID: 11400000, guid: 6444a0de0c8a17141909921d30988fb2, type: 2}
+  statusEffects: []
+  EquippedWeapon: {fileID: 11400000, guid: abc7b59d842d993498c8a2305c399944, type: 2}
+  PotentialSkillList: []
