@@ -19,6 +19,8 @@ public class BattleState : MonoBehaviour
     private void OnEnable()
     {
         PartyMembers = GameManager.instance.partyManager.Party;
+        HostileRoom.SendEnemy += GetEnemy;
+
         CurrentActiveCharacter = PartyMembers[0];
 
         CurrentActiveCharacter.CurrHP = CurrentActiveCharacter.MaxHP; // fully heal the enemy for testing purposes
@@ -30,11 +32,14 @@ public class BattleState : MonoBehaviour
     private void OnDisable()
     {
         PartyMembers = null;
+        HostileRoom.SendEnemy -= GetEnemy;
     }
     private void Start()
     {
         OnBattleStateAwake?.Invoke(this);
     }
+
+    void GetEnemy(Enemy sentEnemy) => Enemy = sentEnemy;
     public void LaunchPlayerAction()
     {
         PlayerTurn?.Invoke();

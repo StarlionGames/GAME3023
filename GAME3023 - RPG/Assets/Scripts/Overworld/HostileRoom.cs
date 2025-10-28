@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +16,9 @@ public class HostileRoom : Room
 
     [SerializeField, Range(0,100)] float EncounterRate;
     [SerializeField] float EncounterAdd;
+
+    [SerializeField] List<Enemy> EnemyPool; // to get the pool of enemies in this room
+    public static Action<Enemy> SendEnemy;
 
     private void OnEnable()
     {
@@ -35,7 +40,7 @@ public class HostileRoom : Room
 
         if (EncounterTriggerThreshold < 0)
         {
-            EncounterTriggerThreshold = Random.Range(10,15);
+            EncounterTriggerThreshold = UnityEngine.Random.Range(10,15);
             RollEncounter();
         }
     }
@@ -52,12 +57,13 @@ public class HostileRoom : Room
     }
     public void RollEncounter()
     {
-        int point = Random.Range(1, 100);
+        int point = UnityEngine.Random.Range(1, 100);
 
         if (point <= EncounterRate)
         {
             Debug.Log($"encounter rate was {EncounterRate} and the random was {point}.");
-            ResetEncounters(); 
+            ResetEncounters();
+            SendEnemy?.Invoke(GetRandomEnemyFromPool());
             SceneManager.LoadScene("BattleScene");
         }
         else
@@ -74,6 +80,14 @@ public class HostileRoom : Room
         
         EncounterRate = RoomEncounterRate;
         EncounterAdd = 5;
+    }
+    Enemy GetRandomEnemyFromPool()
+    {
+        if (EnemyPool == null || EnemyPool.Count < 0) { return null; }
+
+        Enemy chosenEnemy = EnemyPool[UnityEngine.Random.Range(0, EnemyPool.Count-1)];
+
+        return chosenEnemy;
     }
     public float GetRoomEncounterRate() {  return RoomEncounterRate; }
 }
