@@ -18,23 +18,22 @@ public class BattleState : MonoBehaviour
 
     private void OnEnable()
     {
+        HostileRoom.SendEnemy += GetEnemy;
         PartyMembers = GameManager.instance.partyManager.Party;
-        CurrentActiveCharacter = PartyMembers[0];
-
-        CurrentActiveCharacter.CurrHP = CurrentActiveCharacter.MaxHP; // fully heal the enemy for testing purposes
-        Enemy.CurrHP = Enemy.MaxHP; // fully heal the enemy for testing purposes
-        Enemy.Resurrect();
-
-        EnemyTurn += () => Enemy.AttackTarget(CurrentActiveCharacter);
+        CurrentActiveCharacter = PartyMembers[0];      
     }
     private void OnDisable()
     {
         PartyMembers = null;
+        PlayerTurn = null;
+        EnemyTurn = null;
+        OnBattleStateAwake = null;
     }
     private void Start()
     {
         OnBattleStateAwake?.Invoke(this);
     }
+    void GetEnemy(Enemy sentEnemy) => Enemy = sentEnemy;
     public void LaunchPlayerAction()
     {
         PlayerTurn?.Invoke();
@@ -43,6 +42,6 @@ public class BattleState : MonoBehaviour
     public void LaunchEnemyAction()
     {
         EnemyTurn?.Invoke();
-        //EnemyTurn = null;
+        EnemyTurn = null;
     }
 }

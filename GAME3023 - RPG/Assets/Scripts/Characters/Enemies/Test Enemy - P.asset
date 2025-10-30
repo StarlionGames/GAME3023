@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b53b77670ec6e094586492dd2230fb55, type: 3}
-  m_Name: Test Enemy
+  m_Name: Test Enemy - P
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   sprite: {fileID: 0}
   Level: 5
-  IsDowned: 1
-  MaxHP: 39
+  IsDowned: 0
+  MaxHP: 40
   MaxSP: 10
-  CurrHP: 0
+  CurrHP: 40
   CurrSP: 10
-  ATK: 49
-  DEF: 49
-  RES: 65
-  SPD: 45
+  ATK: 45
+  DEF: 40
+  RES: 35
+  SPD: 56
   skills:
   - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
+  - {fileID: 11400000, guid: f34e23e2365140b4783192b69f2b2987, type: 2}
   statusEffects: []

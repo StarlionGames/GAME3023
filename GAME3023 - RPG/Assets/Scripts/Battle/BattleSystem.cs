@@ -31,16 +31,18 @@ public class BattleSystem : MonoBehaviour
         OnTurnEnd += ChooseActions;
 
         CurrentPhase = BattlePhases.BeginFight;
-        StartCoroutine(SetupBattle());
     }
     private void OnDisable()
     {
-        OnTurnBegin -= () => StartCoroutine(Battle());
-        OnTurnEnd -= ChooseActions;
+        OnTurnBegin = null;
+        OnTurnEnd = null;
+        UpdatePhases = null;
+        OnBattleSystemAwake = null;
     }
     private void Start()
     {
         OnBattleSystemAwake?.Invoke(this);
+        StartCoroutine(SetupBattle());
     }
     IEnumerator SetupBattle()
     {
@@ -68,7 +70,6 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         CurrentPhase = BattlePhases.EnemyTurn;
-        ui.UpdateText("enemy attacked!");
         state.LaunchEnemyAction();
         if (state.CurrentActiveCharacter.IsDowned)
         {

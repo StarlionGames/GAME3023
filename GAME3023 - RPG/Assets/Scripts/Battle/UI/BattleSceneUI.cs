@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class BattleSceneUI : MonoBehaviour
     public ScrollRect SkillList;
     [SerializeField] GameObject SkillChoicePrefab;
 
+    public static Action<BattleSceneUI> OnBattleUIAwake;
+
     private void OnEnable()
     {
         BattleState.OnBattleStateAwake += GetBattleState;
@@ -27,6 +30,7 @@ public class BattleSceneUI : MonoBehaviour
     private void OnDisable()
     {
         BattleState.OnBattleStateAwake -= GetBattleState;
+        OnBattleUIAwake = null;
     }
     private void Start()
     {
@@ -39,6 +43,8 @@ public class BattleSceneUI : MonoBehaviour
 
         AttackButton.onClick.AddListener(() => Attack(curr));
         SkillButton.onClick.AddListener(() => OpenSkills(curr));
+
+        OnBattleUIAwake?.Invoke(this);
     }
     void GetBattleState(BattleState currBattleState) => battleState = currBattleState;
     public void UpdateText(string newText)

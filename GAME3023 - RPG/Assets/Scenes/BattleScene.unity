@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleTurn
   CurrentActiveCharacter: {fileID: 0}
-  Enemy: {fileID: 11400000, guid: 8dfbd670511539b45a4eeb1dbbc4cf3e, type: 2}
+  Enemy: {fileID: 0}
   TurnsSinceStart: 0
 --- !u!114 &795793074
 MonoBehaviour:
@@ -1996,9 +1996,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1553296570480721865, guid: eb23ece5cef4a014b9d426b3ec97b188, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553296570480721865, guid: eb23ece5cef4a014b9d426b3ec97b188, type: 3}
       propertyPath: character
       value: 
-      objectReference: {fileID: 11400000, guid: 8dfbd670511539b45a4eeb1dbbc4cf3e, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3373012467649643671, guid: eb23ece5cef4a014b9d426b3ec97b188, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
