@@ -21,3 +21,6 @@ https://discussions.unity.com/t/not-sure-when-to-use-lambda-expressions-can-some
 
 damage formula
 https://bulbapedia.bulbagarden.net/wiki/Damage#Generation_III
+
+scene loading event
+https://docs.unity3d.com/6000.2/Documentation/ScriptReference/SceneManagement.SceneManager-sceneLoaded.html

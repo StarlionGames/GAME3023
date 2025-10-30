@@ -63,8 +63,7 @@ public class HostileRoom : Room
         {
             Debug.Log($"encounter rate was {EncounterRate} and the random was {point}.");
             ResetEncounters();
-            SendEnemy?.Invoke(GetRandomEnemyFromPool());
-            SceneManager.LoadScene("BattleScene");
+            LoadBattleScene("BattleScene", GetRandomEnemyFromPool());
         }
         else
         {
@@ -88,6 +87,17 @@ public class HostileRoom : Room
         Enemy chosenEnemy = EnemyPool[UnityEngine.Random.Range(0, EnemyPool.Count-1)];
 
         return chosenEnemy;
+    }
+    public static void LoadBattleScene(string sceneName, Enemy enemy)
+    {
+        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            SendEnemy?.Invoke(enemy);
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.LoadScene(sceneName);
     }
     public float GetRoomEncounterRate() {  return RoomEncounterRate; }
 }

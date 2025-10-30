@@ -25,4 +25,5 @@ MonoBehaviour:
   SPD: 45
   skills:
   - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
+  - {fileID: 11400000, guid: f34e23e2365140b4783192b69f2b2987, type: 2}
   statusEffects: []

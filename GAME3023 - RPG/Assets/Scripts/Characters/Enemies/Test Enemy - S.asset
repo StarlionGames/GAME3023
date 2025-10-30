@@ -17,12 +17,13 @@ MonoBehaviour:
   IsDowned: 0
   MaxHP: 44
   MaxSP: 50
-  CurrHP: 0
-  CurrSP: 0
+  CurrHP: 44
+  CurrSP: 50
   ATK: 48
   DEF: 65
   RES: 64
   SPD: 43
   skills:
   - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
+  - {fileID: 11400000, guid: f34e23e2365140b4783192b69f2b2987, type: 2}
   statusEffects: []

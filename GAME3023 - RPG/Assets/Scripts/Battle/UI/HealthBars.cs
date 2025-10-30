@@ -3,12 +3,37 @@ using UnityEngine.UI;
 
 public class HealthBars : MonoBehaviour
 {
-    [SerializeField] Character character;
+    Character character;
+    [SerializeField] bool isEnemy;
 
-    Slider slider => GetComponent<Slider>();
+    Slider slider;
+
+    private void OnEnable()
+    {
+        if (isEnemy)
+        {
+            HostileRoom.SendEnemy += GetEnemy;
+        }
+        else
+        {
+            character = GameManager.instance.partyManager.Party[0];
+        }
+    }
+    private void OnDisable()
+    {
+        if (isEnemy)
+        {
+            HostileRoom.SendEnemy -= GetEnemy;
+        }
+        else { 
+            character = null;
+        }
+    }
 
     private void Start()
     {
+        slider = GetComponent<Slider>();
+        
         slider.minValue = 0;
         slider.maxValue = character.MaxHP;
         slider.value = character.CurrHP;
@@ -19,4 +44,5 @@ public class HealthBars : MonoBehaviour
     {
         slider.value = character.CurrHP;
     }
+    void GetEnemy(Enemy sentEnemy) => character = sentEnemy;
 }
