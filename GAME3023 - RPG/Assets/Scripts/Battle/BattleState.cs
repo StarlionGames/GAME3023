@@ -31,13 +31,8 @@ public class BattleState : MonoBehaviour
     }
     private void Start()
     {
-        CurrentActiveCharacter.CurrHP = CurrentActiveCharacter.MaxHP; // fully heal the enemy for testing purposes
-        Enemy.CurrHP = Enemy.MaxHP; // fully heal the enemy for testing purposes
-        Enemy.Resurrect();
-
         OnBattleStateAwake?.Invoke(this);
     }
-
     void GetEnemy(Enemy sentEnemy) => Enemy = sentEnemy;
     public void LaunchPlayerAction()
     {

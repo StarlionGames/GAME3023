@@ -6,7 +6,7 @@ public class HealthBars : MonoBehaviour
     Character character;
     [SerializeField] bool isEnemy;
 
-    Slider slider;
+    Slider slider => GetComponentInChildren<Slider>();
 
     private void OnEnable()
     {
@@ -17,32 +17,41 @@ public class HealthBars : MonoBehaviour
         else
         {
             character = GameManager.instance.partyManager.Party[0];
+            OnBattleStarted();
         }
     }
     private void OnDisable()
     {
-        if (isEnemy)
+        if (isEnemy) { HostileRoom.SendEnemy -= GetEnemy; }
+        if (character != null)
         {
-            HostileRoom.SendEnemy -= GetEnemy;
-        }
-        else { 
+            character.OnDamage -= UpdateSliderValue;
             character = null;
         }
     }
-
-    private void Start()
+    void Start()
     {
-        slider = GetComponent<Slider>();
+        if (character == null) { Debug.Log("no assigned character on " + gameObject.name); }
+        character.OnDamage += UpdateSliderValue;
+    }
+    void OnBattleStarted()
+    {
+        if (slider == null || character == null) { return; }
         
         slider.minValue = 0;
         slider.maxValue = character.MaxHP;
         slider.value = character.CurrHP;
-
-        character.OnDamage += UpdateSliderValue;
     }
     void UpdateSliderValue()
     {
+        if (slider == null || character == null) { return; }
+
         slider.value = character.CurrHP;
     }
-    void GetEnemy(Enemy sentEnemy) => character = sentEnemy;
+    void GetEnemy(Enemy sentEnemy)
+    {
+        sentEnemy.BattleStart();
+        character = sentEnemy;
+        OnBattleStarted();
+    }
 }

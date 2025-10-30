@@ -28,8 +28,8 @@ public class HostileRoom : Room
     private void OnDisable()
     {
         TallGrass.SteppedOnEncounterTile -= IncreaseEncounterChance;
+        SendEnemy = null;
     }
-
     public void IncreaseEncounterChance()
     {
         float distSoFar = CalculateDistance();

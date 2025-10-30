@@ -11,11 +11,11 @@ public class EnemyBattleAI : MonoBehaviour
     {
         BattleState.OnBattleStateAwake += GetBattleState;
         BattleSceneUI.OnBattleUIAwake += GetBattleUI;
-        BattleSystem.OnTurnEnd += PickAction;
+        BattleSystem.OnTurnBegin += PickAction;
     }
     private void Start()
     {
-        
+        PickAction();   
     }
 
     void GetBattleState(BattleState currBattleState) => battleState = currBattleState;
