@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc84495dd51eea4eabd109a536a9c05, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  _ID: 0
-  _name: Item
-  description: default text.
+  _ID: 999
+  _name: Test Item
+  description: test test test
   category: undefined
   icon: {fileID: 0}

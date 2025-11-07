@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91d517a837f89e84d96cdad0610cd4c4, type: 3}
   m_Name: ItemTable
   m_EditorClassIdentifier: Assembly-CSharp::ItemTableMaster
-  itemTable: []
+  itemTable:
+  - {fileID: 11400000, guid: 9b0dcdbc38f971b47ae55e6c5d304d0c, type: 2}
