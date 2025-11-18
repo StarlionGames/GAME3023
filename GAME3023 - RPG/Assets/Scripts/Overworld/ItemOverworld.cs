@@ -11,13 +11,24 @@ public class ItemOverworld : MonoBehaviour, Interactable
         if (!CanPickUp) { return; }
         
         Debug.Log("fart " + item.Name);
+        Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         CanPickUp = true;
+
+        if (collision.TryGetComponent(out PlayerMovement player))
+        {
+            player.SetInteractable(gameObject);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         CanPickUp = false;
+
+        if (collision.TryGetComponent(out PlayerMovement player))
+        {
+            player.EraseInteractable();
+        }
     }
 }
