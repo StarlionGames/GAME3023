@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance {  get; private set; }
+    public Inventory inventory {  get; private set; }
 
     private void Awake()
     {
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
         else
         {
             Instance = this;
+            inventory = GetComponentInChildren<Inventory>();
         }
     }
 }

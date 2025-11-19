@@ -10,7 +10,8 @@ public class ItemOverworld : MonoBehaviour, Interactable
     {
         if (!CanPickUp) { return; }
         
-        Debug.Log("fart " + item.Name);
+        Debug.Log("Added " + item.Name + " to inventory.");
+        Player.Instance.inventory.AddToInventory(item, 1);
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
