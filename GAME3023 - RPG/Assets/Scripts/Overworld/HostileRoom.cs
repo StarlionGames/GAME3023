@@ -18,17 +18,19 @@ public class HostileRoom : Room
     [SerializeField] float EncounterAdd;
 
     [SerializeField] List<Enemy> EnemyPool; // to get the pool of enemies in this room
-    public static Action<Enemy> SendEnemy;
+    [SerializeField] EncounterChannel _encounterChannel;
+    [SerializeField] EncounterManager _manager;
 
     private void OnEnable()
     {
         TallGrass.SteppedOnEncounterTile += IncreaseEncounterChance;
         GameManager.instance.mapManager.SetCurrentRoom(this);
+
+        if (_encounterChannel == null) return;
     }
     private void OnDisable()
     {
         TallGrass.SteppedOnEncounterTile -= IncreaseEncounterChance;
-        SendEnemy = null;
     }
     public void IncreaseEncounterChance()
     {
@@ -63,7 +65,11 @@ public class HostileRoom : Room
         {
             Debug.Log($"encounter rate was {EncounterRate} and the random was {point}.");
             ResetEncounters();
-            LoadBattleScene("BattleScene", GetRandomEnemyFromPool());
+
+            Enemy chosenEnemy = GetRandomEnemyFromPool();
+            _manager.SetEnemies(chosenEnemy);
+           
+            SceneManager.LoadSceneAsync("BattleScene");
         }
         else
         {
@@ -88,16 +94,6 @@ public class HostileRoom : Room
 
         return chosenEnemy;
     }
-    public static void LoadBattleScene(string sceneName, Enemy enemy)
-    {
-        void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            SendEnemy?.Invoke(enemy);
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-        }
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        SceneManager.LoadScene(sceneName);
-    }
+    
     public float GetRoomEncounterRate() {  return RoomEncounterRate; }
 }

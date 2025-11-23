@@ -252,4 +252,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c088b28a44a8d4daee6d57e0ff08d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthBars
-  character: {fileID: 0}
+  _encounterChannel: {fileID: 11400000, guid: 16fbdbad33fd8e04290abe08acfa4745, type: 2}
+  isEnemy: 0

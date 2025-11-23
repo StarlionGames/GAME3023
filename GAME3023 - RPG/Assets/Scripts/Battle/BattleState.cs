@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UnityEngine.EventSystems.EventTrigger;
-
 public class BattleState : MonoBehaviour
 {
+    [SerializeField] EncounterManager _encounterManager;
+    [SerializeField] EncounterChannel _encounterChannel;
     List<Party> PartyMembers;
 
     public Party CurrentActiveCharacter;
@@ -18,7 +18,8 @@ public class BattleState : MonoBehaviour
 
     private void OnEnable()
     {
-        HostileRoom.SendEnemy += GetEnemy;
+        Enemy = _encounterManager.GetEnemies();
+        
         PartyMembers = GameManager.instance.partyManager.Party;
         CurrentActiveCharacter = PartyMembers[0];      
     }
@@ -31,9 +32,9 @@ public class BattleState : MonoBehaviour
     }
     private void Start()
     {
+        _encounterChannel.OnEventRaised(Enemy);
         OnBattleStateAwake?.Invoke(this);
     }
-    void GetEnemy(Enemy sentEnemy) => Enemy = sentEnemy;
     public void LaunchPlayerAction()
     {
         PlayerTurn?.Invoke();

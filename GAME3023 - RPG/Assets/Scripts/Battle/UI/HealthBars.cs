@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class HealthBars : MonoBehaviour
 {
+    [Header("Channels")]
+    [SerializeField] EncounterChannel _encounterChannel;
+    
     Character character;
     [SerializeField] bool isEnemy;
 
@@ -12,7 +15,7 @@ public class HealthBars : MonoBehaviour
     {
         if (isEnemy)
         {
-            HostileRoom.SendEnemy += GetEnemy;
+            _encounterChannel.OnEventRaised += GetEnemy;
         }
         else
         {
@@ -22,29 +25,26 @@ public class HealthBars : MonoBehaviour
     }
     private void OnDisable()
     {
-        if (isEnemy) { HostileRoom.SendEnemy -= GetEnemy; }
+        if (isEnemy) { _encounterChannel.OnEventRaised -= GetEnemy; }
         if (character != null)
         {
             character.OnDamage -= UpdateSliderValue;
             character = null;
         }
     }
-    void Start()
-    {
-        if (character == null) { Debug.Log("no assigned character on " + gameObject.name); }
-        character.OnDamage += UpdateSliderValue;
-    }
     void OnBattleStarted()
     {
-        if (slider == null || character == null) { return; }
+        if (slider == null || character == null) { Debug.Log("no assigned character on " + gameObject.name); return; }
         
         slider.minValue = 0;
         slider.maxValue = character.MaxHP;
         slider.value = character.CurrHP;
+
+        character.OnDamage += UpdateSliderValue;
     }
     void UpdateSliderValue()
     {
-        if (slider == null || character == null) { return; }
+        if (slider == null || character == null) { Debug.Log("no assigned character on " + gameObject.name); return; }
 
         slider.value = character.CurrHP;
     }

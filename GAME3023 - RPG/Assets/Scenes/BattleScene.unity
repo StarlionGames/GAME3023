@@ -1366,6 +1366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 668a947c40a3b5944bde3f1b3d1c0d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BattleTurn
+  _encounterManager: {fileID: 11400000, guid: 7952f3c71323d814da158331145fc14e, type: 2}
+  _encounterChannel: {fileID: 11400000, guid: 16fbdbad33fd8e04290abe08acfa4745, type: 2}
   CurrentActiveCharacter: {fileID: 0}
   Enemy: {fileID: 0}
   TurnsSinceStart: 0
