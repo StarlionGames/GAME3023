@@ -8,16 +8,20 @@ public class HostileRoom : Room
     Vector3 PlayerPos => Player.Instance.gameObject.transform.position;
     Vector3 PrevPos;
 
+    [Header("Distance Calculations")]
     public float TotalDistanceWalked = 0;
     float EncounterTriggerThreshold = 10;
     
     [SerializeField] float RoomEncounterRate; // is the base encounter rate for the room
     [SerializeField] float SafetyDistRemaining = 10;
 
+    [Header("Encounter Rates")]
     [SerializeField, Range(0,100)] float EncounterRate;
     [SerializeField] float EncounterAdd;
 
     [SerializeField] List<Enemy> EnemyPool; // to get the pool of enemies in this room
+
+    [Header("Channels & Managers")]
     [SerializeField] EncounterChannel _encounterChannel;
     [SerializeField] EncounterManager _manager;
 
