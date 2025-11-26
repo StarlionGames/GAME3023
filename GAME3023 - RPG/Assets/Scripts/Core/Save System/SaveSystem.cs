@@ -2,10 +2,10 @@ using UnityEngine;
 using System.IO;
 public static class SaveSystem
 {
+    private static string path = Path.Combine(Application.persistentDataPath, "player.json");
+
     public static void SavePlayer(Player _player)
     {
-        string path = Path.Combine(Application.persistentDataPath, "player.json");
-
         PlayerData data = new PlayerData(_player);
         string _json = JsonUtility.ToJson(data);
 
@@ -19,7 +19,6 @@ public static class SaveSystem
 
     public static PlayerData LoadPlayer()
     {
-        string path = Path.Combine(Application.persistentDataPath, "player.json");
         if (!File.Exists(path)) { Debug.Log("save file does not exist in " + path); return null; }
 
         try
