@@ -27,3 +27,10 @@ https://docs.unity3d.com/6000.2/Documentation/ScriptReference/SceneManagement.Sc
 
 event channels and listeners
 https://github.com/UnityTechnologies/open-project-1/wiki/Event-system
+
+saving and loading structure + good tips in comments
+https://youtu.be/XOjd_qU2Ido?si=2-m9DXcE6kzHsFps
+
+using JSON
+https://docs.unity3d.com/6000.0/Documentation/Manual/json-serialization.html
+https://docs.unity3d.com/6000.0/Documentation/ScriptReference/JsonUtility.html
