@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     public static GameManager instance {  get; private set; }
     public MapManager mapManager { get; private set; }
     public PartyManager partyManager { get; private set; }
+
+    public Save _save;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -20,5 +22,10 @@ public class GameManager : MonoBehaviour
             mapManager = GetComponentInChildren<MapManager>();
             partyManager = GetComponentInChildren<PartyManager>();
         }
+    }
+
+    public void SaveGame()
+    {
+        SaveSystem.InitiateSave(_save);
     }
 }

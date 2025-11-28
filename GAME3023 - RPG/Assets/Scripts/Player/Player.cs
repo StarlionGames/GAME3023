@@ -5,6 +5,14 @@ public class Player : MonoBehaviour
     public static Player Instance {  get; private set; }
     public Inventory inventory {  get; private set; }
 
+    private void OnEnable()
+    {
+        SaveSystem.OnSaveLoaded += LoadPlayer;
+    }
+    private void OnDisable()
+    {
+        SaveSystem.OnSaveLoaded -= LoadPlayer;
+    }
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -18,11 +26,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SavePlayer() { SaveSystem.SavePlayer(this); }
-
-    public void LoadPlayer()
+    public void LoadPlayer(Save save)
     {
-        PlayerData data = SaveSystem.LoadSave();
+        PlayerData data = save._player;
 
         Vector3 pos;
         pos.x = data.position[0];

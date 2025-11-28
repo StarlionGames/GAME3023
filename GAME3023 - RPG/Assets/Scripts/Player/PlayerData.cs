@@ -2,11 +2,15 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class Save
+public struct Save
 {
-    public Save()
+    public PlayerData _player;
+    public PartyData _party;
+    
+    public Save(PlayerData player, PartyData party)
     {
-         
+        _party = party;
+        _player = player;   
     }
 }
 
