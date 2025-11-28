@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
     public void LoadPlayer()
     {
-        PlayerData data = SaveSystem.LoadPlayer();
+        PlayerData data = SaveSystem.LoadSave();
 
         Vector3 pos;
         pos.x = data.position[0];

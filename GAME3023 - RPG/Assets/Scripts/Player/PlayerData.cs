@@ -1,4 +1,14 @@
+using System;
 using UnityEngine;
+
+[Serializable]
+public class Save
+{
+    public Save()
+    {
+         
+    }
+}
 
 [System.Serializable]
 public class PlayerData
@@ -13,5 +23,21 @@ public class PlayerData
         position[0] = _pos.x;
         position[1] = _pos.y;
         position[2] = _pos.z;
+    }
+}
+
+[Serializable]
+public class PartyData
+{
+    public Party[] characters;
+
+    public PartyData(int number, PartyManager _party)
+    {
+        characters = new Party[number];
+
+        for (int i = 0; i < _party.Party.Count-1; i++)
+        {
+            characters[i] = _party.Party[i];
+        }
     }
 }
