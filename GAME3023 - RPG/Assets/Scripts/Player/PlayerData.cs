@@ -5,12 +5,12 @@ using UnityEngine;
 public struct Save
 {
     public PlayerData _player;
-    public PartyData _party;
+    //public CharacterData[] _party; 
     
-    public Save(PlayerData player, PartyData party)
+    public Save(PlayerData player)
     {
-        _party = party;
-        _player = player;   
+     
+        this._player = player;   
     }
 }
 
@@ -31,17 +31,14 @@ public class PlayerData
 }
 
 [Serializable]
-public class PartyData
+public class CharacterData
 {
-    public Party[] characters;
-
-    public PartyData(int number, PartyManager _party)
+    public int hp;
+    public int sp;
+    
+    public CharacterData(int _hp, int _sp)
     {
-        characters = new Party[number];
-
-        for (int i = 0; i < _party.Party.Count-1; i++)
-        {
-            characters[i] = _party.Party[i];
-        }
+        this.hp = _hp;
+        this.sp = _sp;
     }
 }

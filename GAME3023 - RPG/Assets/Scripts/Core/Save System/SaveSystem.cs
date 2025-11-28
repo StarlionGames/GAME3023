@@ -4,28 +4,25 @@ using System;
 public static class SaveSystem
 {
     public static Action<Save> OnSaveLoaded;
+    public static Save CurrentSave;
     private static string path = Path.Combine(Application.persistentDataPath, "player.json");
 
     public static void CreateNewSave()
     {
         Player newPlayer = new Player();
-        PartyManager newManager = new PartyManager();
 
         PlayerData playerData = new PlayerData(newPlayer);
-        PartyData partyData = new PartyData(newManager.Party.Count, newManager);
 
-        Save newSave = new Save(playerData,partyData);
-        InitiateSave(newSave);
+        CurrentSave = new Save(playerData);
+        InitiateSave(CurrentSave);
     }
 
     #region Save Functions
 
     public static void InitiateSave(Save save)
     {
-        PlayerData player_data = save._player;
-        PartyData party_data = save._party;
-
-        string json = JsonUtility.ToJson(player_data) + "\n" + JsonUtility.ToJson(party_data);
+        CurrentSave = save;
+        string json = JsonUtility.ToJson(save);
 
         try
         {
@@ -46,9 +43,12 @@ public static class SaveSystem
             string _json = File.ReadAllText(path);
             Save _data = JsonUtility.FromJson<Save>(_json);
 
+            OnSaveLoaded?.Invoke(_data);
+
             return _data;
         }
         catch { return default; }
     }
+
     #endregion
 }

@@ -21,9 +21,11 @@ public class TitleScreenUI : MonoBehaviour
 
         while (!async.isDone) { yield return null; }
 
+        Save s = SaveSystem.LoadSave();
+
         Player p = FindFirstObjectByType<Player>();
         Debug.Log("Loaded player at " + p.transform.position);
-        p.LoadPlayer();
+        p.LoadPlayer(s);
 
         SceneManager.UnloadSceneAsync("StartScene");
     }

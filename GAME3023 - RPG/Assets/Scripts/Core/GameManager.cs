@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance {  get; private set; }
     public MapManager mapManager { get; private set; }
     public PartyManager partyManager { get; private set; }
-
-    public Save _save;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -26,6 +24,9 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.InitiateSave(_save);
+        PlayerData _player = new PlayerData(Player.Instance);
+        Save SaveState = new Save(_player);
+        
+        SaveSystem.InitiateSave(SaveState);
     }
 }

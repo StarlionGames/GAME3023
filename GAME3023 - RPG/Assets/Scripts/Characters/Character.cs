@@ -1,7 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
-[CreateAssetMenu(menuName = "Character/New Base Character")]
+[CreateAssetMenu(menuName = "Character/New Base Character"), Serializable]
 public class Character: ScriptableObject
 {
     public Sprite sprite;
