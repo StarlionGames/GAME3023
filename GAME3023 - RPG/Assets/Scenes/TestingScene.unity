@@ -8223,8 +8223,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2243210603433854870}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1532218776}
+        m_TargetAssemblyTypeName: GameUI, Assembly-CSharp
         m_MethodName: SaveGame
         m_Mode: 1
         m_Arguments:
@@ -8333,6 +8333,7 @@ GameObject:
   - component: {fileID: 1532218774}
   - component: {fileID: 1532218773}
   - component: {fileID: 1532218772}
+  - component: {fileID: 1532218776}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -8424,6 +8425,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1532218776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532218771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae11065fac94b114e851260725ea7331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameUI
 --- !u!1001 &2005603470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8656,17 +8669,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
---- !u!114 &2243210603433854870 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 233578214644236937, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
-  m_PrefabInstance: {fileID: 2243210603433854869}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f54ec25e7225f064ea4cfc7334052430, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
 --- !u!1001 &7918245818344099749
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -23,9 +23,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void SaveGame()
-    {
+    {  
         PlayerData _player = new PlayerData(Player.Instance);
-        Save SaveState = new Save(_player);
+        CharacterData[] _party = new CharacterData[]
+        {
+            new CharacterData(partyManager.Party[0]),
+            new CharacterData(partyManager.Party[1]),
+            new CharacterData(partyManager.Party[2])
+        };
+
+        Save SaveState = new Save(_player, _party);
         
         SaveSystem.InitiateSave(SaveState);
     }

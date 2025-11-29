@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Character/New Party Member")]
 public class Party : Character
 {
+    public int ID;
     public Weapon EquippedWeapon;
     [SerializeField] List<Skills> PotentialSkillList;
 

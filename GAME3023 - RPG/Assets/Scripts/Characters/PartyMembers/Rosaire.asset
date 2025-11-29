@@ -17,7 +17,7 @@ MonoBehaviour:
   IsDowned: 0
   MaxHP: 60
   MaxSP: 10
-  CurrHP: 52
+  CurrHP: 60
   CurrSP: 10
   ATK: 62
   DEF: 63
@@ -27,6 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f34e23e2365140b4783192b69f2b2987, type: 2}
   - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
   statusEffects: []
+  ID: 1
   EquippedWeapon: {fileID: 11400000, guid: abc7b59d842d993498c8a2305c399944, type: 2}
   PotentialSkillList:
   - {fileID: 11400000, guid: 6444a0de0c8a17141909921d30988fb2, type: 2}

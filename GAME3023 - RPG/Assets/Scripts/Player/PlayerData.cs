@@ -5,12 +5,12 @@ using UnityEngine;
 public struct Save
 {
     public PlayerData _player;
-    //public CharacterData[] _party; 
+    public CharacterData[] _party; 
     
-    public Save(PlayerData player)
+    public Save(PlayerData player, CharacterData[] party)
     {
-     
         this._player = player;   
+        this._party = party;
     }
 }
 
@@ -33,12 +33,16 @@ public class PlayerData
 [Serializable]
 public class CharacterData
 {
+    public int id;
+    public int lvl;
     public int hp;
     public int sp;
     
-    public CharacterData(int _hp, int _sp)
+    public CharacterData(Party character)
     {
-        this.hp = _hp;
-        this.sp = _sp;
+        this.id = character.ID;
+        this.lvl = character.Level;
+        this.hp = character.CurrHP;
+        this.sp = character.CurrSP;
     }
 }

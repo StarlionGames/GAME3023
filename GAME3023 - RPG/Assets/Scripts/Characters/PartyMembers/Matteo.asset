@@ -15,8 +15,10 @@ MonoBehaviour:
   sprite: {fileID: 0}
   Level: 1
   IsDowned: 0
-  CurrHP: 160
-  CurrSP: 15
+  MaxHP: 0
+  MaxSP: 0
+  CurrHP: 0
+  CurrSP: 0
   ATK: 0
   DEF: 0
   RES: 0
@@ -25,4 +27,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d52b02963d8ffa945b4732bd639f077e, type: 2}
   - {fileID: 11400000, guid: f34e23e2365140b4783192b69f2b2987, type: 2}
   statusEffects: []
+  ID: 2
   EquippedWeapon: {fileID: 11400000, guid: ad6564cba4a09e24d8b9aa51b37f6a34, type: 2}
+  PotentialSkillList: []

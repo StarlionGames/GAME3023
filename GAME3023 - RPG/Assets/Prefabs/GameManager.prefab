@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 233578214644236937}
   - component: {fileID: 3473702102406659471}
   - component: {fileID: 3501721196733278192}
+  - component: {fileID: 2074051783516470354}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -70,7 +71,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f599fcff7ef0034abb8322f89f516c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PartyManager
+  database: {fileID: 2074051783516470354}
   Party:
   - {fileID: 11400000, guid: 3923259e06be0574fa90faa80a6958d0, type: 2}
   - {fileID: 11400000, guid: 8c3573f708468764b8540fa72ad70983, type: 2}
   - {fileID: 11400000, guid: 750fa7ce5de3f3d40a095a623f4455e1, type: 2}
+--- !u!114 &2074051783516470354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164107902471136862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1128248cf01741a40897476d5277ffd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PartyDatabase
+  AllPlayableCharacters:
+  - {fileID: 11400000, guid: 3923259e06be0574fa90faa80a6958d0, type: 2}
+  - {fileID: 11400000, guid: 750fa7ce5de3f3d40a095a623f4455e1, type: 2}
+  - {fileID: 11400000, guid: 8c3573f708468764b8540fa72ad70983, type: 2}

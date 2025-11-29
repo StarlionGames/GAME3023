@@ -12,8 +12,9 @@ public static class SaveSystem
         Player newPlayer = new Player();
 
         PlayerData playerData = new PlayerData(newPlayer);
+        CharacterData[] characters = new CharacterData[] { };
 
-        CurrentSave = new Save(playerData);
+        CurrentSave = new Save(playerData, characters);
         InitiateSave(CurrentSave);
     }
 
