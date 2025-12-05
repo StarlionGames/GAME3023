@@ -34,3 +34,6 @@ https://youtu.be/XOjd_qU2Ido?si=2-m9DXcE6kzHsFps
 using JSON
 https://docs.unity3d.com/6000.0/Documentation/Manual/json-serialization.html
 https://docs.unity3d.com/6000.0/Documentation/ScriptReference/JsonUtility.html
+
+scene management
+https://youtu.be/iXWFTgFNRdM?si=rQH3C3Vz9otsnJJ1

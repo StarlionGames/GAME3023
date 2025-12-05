@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance {  get; private set; }
     public MapManager mapManager { get; private set; }
     public PartyManager partyManager { get; private set; }
+    public SceneLoader sceneLoader { get; private set; }
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -19,6 +21,9 @@ public class GameManager : MonoBehaviour
 
             mapManager = GetComponentInChildren<MapManager>();
             partyManager = GetComponentInChildren<PartyManager>();
+            sceneLoader = GetComponentInChildren<SceneLoader>();
+
+            SceneManager.LoadSceneAsync((int)SceneDirectory.StartScene, LoadSceneMode.Additive);
         }
     }
 
