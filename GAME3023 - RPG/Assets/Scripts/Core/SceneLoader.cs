@@ -48,5 +48,12 @@ public class SceneLoader : MonoBehaviour
         }
 
         loadingScreen.SetActive(false);
+        scenesLoading = null;
+    }
+
+    public void LoadNextScene(SceneDirectory thisScene, SceneDirectory nextScene)
+    {
+        SceneManager.LoadSceneAsync((int)nextScene, LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync((int)thisScene);
     }
 }

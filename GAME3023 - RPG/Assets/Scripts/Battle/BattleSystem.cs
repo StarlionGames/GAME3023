@@ -63,7 +63,8 @@ public class BattleSystem : MonoBehaviour
             BattleDeterminer(BattlePhases.Win);
             yield return new WaitForSeconds(1.5f);
 
-            SceneManager.LoadScene("TestingScene");
+            GameManager.instance.sceneLoader.LoadNextScene(SceneDirectory.Battle,
+                SceneDirectory.Overworld);
         }
             
 
@@ -77,7 +78,8 @@ public class BattleSystem : MonoBehaviour
             BattleDeterminer(BattlePhases.Lose);
             yield return new WaitForSeconds(1.5f);
 
-            SceneManager.LoadScene("TestingScene");
+            GameManager.instance.sceneLoader.LoadNextScene(SceneDirectory.Battle,
+                SceneDirectory.Overworld);
         }
 
         yield return new WaitForSeconds(1.5f);
