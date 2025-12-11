@@ -7,8 +7,10 @@ public enum SceneDirectory
 {
     Manager = 0,
     StartScene = 1,
-    Overworld = 2,
-    Battle = 3
+    Battle = 2,
+    PlainsCenter = 3,
+    PlainsLeft = 4,
+    PlainsRight = 5
 }
 
 public class SceneLoader : MonoBehaviour
@@ -21,7 +23,7 @@ public class SceneLoader : MonoBehaviour
     public IEnumerator LoadAndContinue()
     {
         loadingScreen.SetActive(true);
-        var async = SceneManager.LoadSceneAsync((int)SceneDirectory.Overworld, LoadSceneMode.Additive);
+        var async = SceneManager.LoadSceneAsync((int)SceneDirectory.PlainsCenter, LoadSceneMode.Additive);
         scenesLoading.Add(async);
 
         while (!async.isDone) { yield return null; }

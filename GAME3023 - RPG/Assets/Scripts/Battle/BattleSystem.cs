@@ -64,7 +64,7 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
 
             GameManager.instance.sceneLoader.LoadNextScene(SceneDirectory.Battle,
-                SceneDirectory.Overworld);
+                SceneDirectory.PlainsCenter);
         }
             
 
@@ -79,7 +79,7 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
 
             GameManager.instance.sceneLoader.LoadNextScene(SceneDirectory.Battle,
-                SceneDirectory.Overworld);
+                SceneDirectory.PlainsCenter);
         }
 
         yield return new WaitForSeconds(1.5f);

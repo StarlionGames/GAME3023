@@ -108,6 +108,6 @@ public class BattleSceneUI : MonoBehaviour
     {
         // add probability stuff later
 
-        GameManager.instance.sceneLoader.LoadNextScene(SceneDirectory.Battle,SceneDirectory.Overworld);
+        GameManager.instance.sceneLoader.LoadNextScene(SceneDirectory.Battle,SceneDirectory.PlainsCenter);
     }
 }
