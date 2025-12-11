@@ -38,7 +38,6 @@ public class SceneLoader : MonoBehaviour
 
         StartCoroutine(GetSceneLoadProgress());
     }
-
     public IEnumerator GetSceneLoadProgress()
     {
         for(int i =0; i <scenesLoading.Count; i++)
@@ -52,10 +51,34 @@ public class SceneLoader : MonoBehaviour
         loadingScreen.SetActive(false);
         scenesLoading = null;
     }
-
     public void LoadNextScene(SceneDirectory thisScene, SceneDirectory nextScene)
     {
-        SceneManager.LoadSceneAsync((int)nextScene, LoadSceneMode.Additive);
+        StartCoroutine(CrossFadeToNewScene(thisScene, nextScene));
+        //TODO: add different transition options
+    }
+    IEnumerator CrossFadeToNewScene(SceneDirectory thisScene, SceneDirectory nextScene)
+    {
+        yield return StartCoroutine(FadeIn());
+        
+        AsyncOperation scene = SceneManager.LoadSceneAsync((int)nextScene, LoadSceneMode.Additive);
+ 
+        while(!scene.isDone) yield return null;
+
         SceneManager.UnloadSceneAsync((int)thisScene);
+
+        yield return StartCoroutine(FadeOut());
+    }
+
+    IEnumerator FadeIn()
+    {
+        sceneTransition.SetTrigger("Start");
+        Debug.Log("start");
+        yield return new WaitForSeconds(0.5f);
+    }
+    IEnumerator FadeOut()
+    {
+        sceneTransition.SetTrigger("End");
+        Debug.Log("end");
+        yield return new WaitForSeconds(0.5f);
     }
 }
