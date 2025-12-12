@@ -7,21 +7,26 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
+        if (Instance != this) { return; }
         SaveSystem.OnSaveLoaded += LoadPlayer;
     }
     private void OnDisable()
     {
+        if (Instance != this) { return; }
         SaveSystem.OnSaveLoaded -= LoadPlayer;
     }
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(Instance);
+            Destroy(gameObject);
+            return;
         }
         else
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+
             inventory = GetComponentInChildren<Inventory>();
         }
     }

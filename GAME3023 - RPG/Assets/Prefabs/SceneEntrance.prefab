@@ -49,7 +49,7 @@ MonoBehaviour:
   globalID: {fileID: 1070185629177716153}
   destination:
     sceneLocation: 0
-    id: 
+    entranceID: 
 --- !u!114 &1070185629177716153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728a718dacfa69a4e9c8e7ea58069cc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ID
-  guid: 
+  guid: b9ecceb5-f454-4d14-bc5b-61fe776a2a50
 --- !u!61 &1223115661706574467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -97,7 +97,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -1.5, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -107,5 +107,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 3}
   m_EdgeRadius: 0
