@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public struct Save
+public class Save
 {
     public PlayerData _player;
     public CharacterData[] _party; 
-    public HashSet<string> _obtainedOverworldItems;
+    public List<string> _obtainedOverworldItems;
     
-    public Save(PlayerData player, CharacterData[] party, HashSet<string> items)
+    public Save(PlayerData player, CharacterData[] party, List<string> items)
     {
         this._player = player;   
         this._party = party;
-        this._obtainedOverworldItems = items;
+        this._obtainedOverworldItems = new List<string>();
     }
 }
 

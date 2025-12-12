@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.IO;
 using System;
+using System.Collections.Generic;
 public static class SaveSystem
 {
     public static Action<Save> OnSaveLoaded;
@@ -13,8 +14,9 @@ public static class SaveSystem
 
         PlayerData playerData = new PlayerData(newPlayer);
         CharacterData[] characters = new CharacterData[] { };
+        List<string> items = new List<string>();
 
-        CurrentSave = new Save(playerData, characters);
+        CurrentSave = new Save(playerData, characters, items);
         InitiateSave(CurrentSave);
     }
 
@@ -44,6 +46,7 @@ public static class SaveSystem
             string _json = File.ReadAllText(path);
             Save _data = JsonUtility.FromJson<Save>(_json);
 
+            CurrentSave = _data;
             OnSaveLoaded?.Invoke(_data);
 
             return _data;

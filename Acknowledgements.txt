@@ -42,3 +42,6 @@ scene transitions
 https://youtu.be/CE9VOZivb3I?si=MuxkgliWZWkp7y6b
 
 I've worked on GUID objects on an NDA project so im just recycling my experience with that
+
+trying to make unique ids for each prefab
+https://stackoverflow.com/questions/54737893/how-can-i-tell-whether-an-object-is-a-prefab-asset-or-an-instance-of-that-prefab

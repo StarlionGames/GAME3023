@@ -36,8 +36,9 @@ public class GameManager : MonoBehaviour
             new CharacterData(partyManager.Party[1]),
             new CharacterData(partyManager.Party[2])
         };
+        List<string> itemsObtained =  new List<string>(SaveSystem.CurrentSave._obtainedOverworldItems);
 
-        Save SaveState = new Save(_player, _party);
+        Save SaveState = new Save(_player, _party, itemsObtained);
         
         SaveSystem.InitiateSave(SaveState);
     }

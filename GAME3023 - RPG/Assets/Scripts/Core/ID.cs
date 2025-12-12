@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEditor;
 
 [ExecuteAlways]
 public class ID : MonoBehaviour
@@ -13,6 +14,8 @@ public class ID : MonoBehaviour
     }
     private void OnValidate()
     {
+        if (PrefabUtility.IsPartOfPrefabAsset(this)) return;
+  
         if (string.IsNullOrEmpty(guid)) { guid = Guid.NewGuid().ToString(); }
     }
 }
