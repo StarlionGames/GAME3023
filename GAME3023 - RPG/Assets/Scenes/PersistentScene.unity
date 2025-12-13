@@ -179,6 +179,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2407314804793497046, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: Priority
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407314804793497046, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: m_Volume
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407314804793497046, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5296100453915493130, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
       propertyPath: m_Alpha
       value: 0

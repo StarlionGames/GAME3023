@@ -11,7 +11,8 @@ public enum SceneDirectory
     Battle = 2,
     PlainsCenter = 3,
     PlainsLeft = 4,
-    PlainsRight = 5
+    PlainsRight = 5,
+    Credits = 6
 }
 
 public class SceneLoader : MonoBehaviour
@@ -83,6 +84,7 @@ public class SceneLoader : MonoBehaviour
         OnComplete?.Invoke(); // meant for injecting things into the coroutine
 
         SceneManager.UnloadSceneAsync(thisScene);
+        GameManager.instance.audioManager.ChangeBGM(AudioDirectory.OverworldMusic);
 
         yield return StartCoroutine(FadeOut());
     }

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public MapManager mapManager { get; private set; }
     public PartyManager partyManager { get; private set; }
     public SceneLoader sceneLoader { get; private set; }
+    public AudioManager audioManager { get; private set; }
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -22,8 +23,10 @@ public class GameManager : MonoBehaviour
             mapManager = GetComponentInChildren<MapManager>();
             partyManager = GetComponentInChildren<PartyManager>();
             sceneLoader = GetComponentInChildren<SceneLoader>();
+            audioManager = GetComponentInChildren<AudioManager>();
 
             SceneManager.LoadSceneAsync((int)SceneDirectory.StartScene, LoadSceneMode.Additive);
+            audioManager.ChangeBGM(AudioDirectory.StartMusic);
         }
     }
 

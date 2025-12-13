@@ -109,5 +109,6 @@ public class BattleSceneUI : MonoBehaviour
         // add probability stuff later
 
         GameManager.instance.sceneLoader.LoadNextScene((int)SceneDirectory.Battle,SceneDirectory.PlainsCenter);
+        GameManager.instance.audioManager.ChangeBGM(AudioDirectory.OverworldMusic);
     }
 }

@@ -73,6 +73,7 @@ public class HostileRoom : Room
             Enemy chosenEnemy = GetRandomEnemyFromPool();
             _manager.SetEnemies(chosenEnemy);
 
+            Player.Instance.gameObject.SetActive(false);
             GameManager.instance.sceneLoader.LoadNextScene((int)SceneDirectory.PlainsCenter, SceneDirectory.Battle);
         }
         else
