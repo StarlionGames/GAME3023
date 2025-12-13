@@ -32,7 +32,6 @@ public class SceneLoader : MonoBehaviour
         Save s = SaveSystem.LoadSave();
 
         Player p = FindFirstObjectByType<Player>();
-        Debug.Log("Loaded player at " + p.transform.position);
         p.LoadPlayer(s);
 
         scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneDirectory.StartScene));

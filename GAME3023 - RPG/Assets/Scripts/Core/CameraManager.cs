@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Player.Instance == null) { return; }    
         cinemachine.Follow = Player.Instance.gameObject.transform;
         cinemachine.LookAt = Player.Instance.gameObject.transform;
     }

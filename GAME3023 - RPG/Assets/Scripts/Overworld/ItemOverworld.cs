@@ -2,19 +2,24 @@ using System;
 using UnityEngine;
 
 // items can be picked up in the overworld
-public class ItemOverworld : MonoBehaviour, Interactable, Initialize
+public class ItemOverworld : MonoBehaviour, Interactable
 {
     [SerializeField] Item item;
 
     public ID globalID => GetComponent<ID>();
     bool CanPickUp = false;
-    Rigidbody2D rb => GetComponent<Rigidbody2D>();
-
-    public void Initialize()
+    private void OnEnable()
     {
-        if (!SaveSystem.CurrentSave._obtainedOverworldItems.Contains(globalID.id)) { return; }
-        else
-        {
+        SaveSystem.OnSaveLoaded += Initialize;
+    }
+    private void OnDisable()
+    {
+        SaveSystem.OnSaveLoaded -= Initialize;
+    }
+    public void Initialize(Save save)
+    {
+        if (save._obtainedOverworldItems.Contains(globalID.id)) 
+        { 
             gameObject.SetActive(false);
         }
     }
@@ -26,7 +31,7 @@ public class ItemOverworld : MonoBehaviour, Interactable, Initialize
         Debug.Log("Added " + item.Name + " to inventory.");
         Player.Instance.inventory.AddToInventory(item, 1);
         SaveSystem.CurrentSave._obtainedOverworldItems.Add(globalID.id);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TitleScreenUI : MonoBehaviour
 {
     public void ToOverworld()
     {
-        SceneManager.LoadScene("TestingScene");
+        GameManager.instance.sceneLoader.LoadNextScene((int)SceneDirectory.StartScene, SceneDirectory.PlainsCenter);
     }
 
     public void Continue()

@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class Room : MonoBehaviour, Initialize
 {
     public List<SceneEntrance> allEntrance = new List<SceneEntrance>();
+    public List<ItemOverworld> allItems = new List<ItemOverworld>();
     public Collider2D cameraBounds;
 
     public void Initialize()

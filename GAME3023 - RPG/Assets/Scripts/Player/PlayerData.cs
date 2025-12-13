@@ -13,7 +13,7 @@ public class Save
     {
         this._player = player;   
         this._party = party;
-        this._obtainedOverworldItems = new List<string>();
+        this._obtainedOverworldItems = new List<string>(items);
     }
 }
 
