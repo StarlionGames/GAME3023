@@ -42,6 +42,7 @@ public class BattleSystem : MonoBehaviour
     private void Start()
     {
         OnBattleSystemAwake?.Invoke(this);
+        GameManager.instance.audioManager.ChangeBGM(AudioDirectory.BattleMusic);
         StartCoroutine(SetupBattle());
     }
     IEnumerator SetupBattle()
@@ -63,7 +64,10 @@ public class BattleSystem : MonoBehaviour
             BattleDeterminer(BattlePhases.Win);
             yield return new WaitForSeconds(1.5f);
 
-            SceneManager.LoadScene("TestingScene");
+            GameManager.instance.sceneLoader.LoadNextScene((int)SceneDirectory.Battle,
+                SceneDirectory.PlainsCenter);
+            GameManager.instance.audioManager.ChangeBGM(AudioDirectory.OverworldMusic);
+            Player.Instance.gameObject.SetActive(true);
         }
             
 
@@ -77,7 +81,10 @@ public class BattleSystem : MonoBehaviour
             BattleDeterminer(BattlePhases.Lose);
             yield return new WaitForSeconds(1.5f);
 
-            SceneManager.LoadScene("TestingScene");
+            GameManager.instance.sceneLoader.LoadNextScene((int)SceneDirectory.Battle,
+                SceneDirectory.PlainsCenter);
+            GameManager.instance.audioManager.ChangeBGM(AudioDirectory.OverworldMusic);
+            Player.Instance.gameObject.SetActive(true);
         }
 
         yield return new WaitForSeconds(1.5f);

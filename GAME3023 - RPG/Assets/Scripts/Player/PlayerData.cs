@@ -1,16 +1,19 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public struct Save
+public class Save
 {
     public PlayerData _player;
     public CharacterData[] _party; 
+    public List<string> _obtainedOverworldItems;
     
-    public Save(PlayerData player, CharacterData[] party)
+    public Save(PlayerData player, CharacterData[] party, List<string> items)
     {
         this._player = player;   
         this._party = party;
+        this._obtainedOverworldItems = new List<string>(items);
     }
 }
 

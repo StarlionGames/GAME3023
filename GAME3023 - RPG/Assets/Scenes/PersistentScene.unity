@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 724764549723958000, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0fd23f89aef4e7844ae9a233bc318f99, type: 2}
+    - target: {fileID: 724764549723958000, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2014388582474222458, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1567
@@ -171,11 +179,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2407314804793497046, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: Priority
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407314804793497046, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: m_Volume
+      value: 0.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407314804793497046, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5296100453915493130, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339340677226609505, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: cinemachine
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8017645902049322261, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 99
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8408581287569139144, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6339340677226609505, guid: 2253c3af186b32a42a0db84c68b2df01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
